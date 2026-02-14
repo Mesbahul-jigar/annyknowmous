@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import clientPromise from '../lib/db.js';
+import { generateToken, setAuthCookie } from '../lib/auth.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -55,12 +56,19 @@ export default async function handler(req, res) {
     const passwordHash = await bcrypt.hash(password, 10);
 
     // Insert user
-    await users.insertOne({
+    const result = await users.insertOne({
       username: username.toLowerCase(),
       email: email.toLowerCase(),
       passwordHash,
       createdAt: new Date()
     });
+
+    // Generate JWT token and set cookie for automatic login
+    const token = generateToken({
+      userId: result.insertedId.toString(),
+      username: username.toLowerCase()
+    });
+    setAuthCookie(res, token);
 
     return res.status(200).json({ success: true });
 

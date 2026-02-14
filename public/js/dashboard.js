@@ -27,7 +27,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     displayMessages(result.messages);
     
   } catch (error) {
-    messagesContainer.innerHTML = `<p class="error">Error loading messages: ${error.message}</p>`;
+    const errorElement = document.createElement('p');
+    errorElement.className = 'error';
+    errorElement.textContent = `Error loading messages: ${error.message}`;
+    messagesContainer.innerHTML = '';
+    messagesContainer.appendChild(errorElement);
   }
   
   // Copy link functionality
@@ -44,12 +48,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
   
   function displayMessages(messages) {
+    messagesContainer.innerHTML = '';
+    
     if (messages.length === 0) {
-      messagesContainer.innerHTML = '<p class="no-messages">No messages yet. Share your link to receive messages!</p>';
+      const noMessages = document.createElement('p');
+      noMessages.className = 'no-messages';
+      noMessages.textContent = 'No messages yet. Share your link to receive messages!';
+      messagesContainer.appendChild(noMessages);
       return;
     }
-    
-    messagesContainer.innerHTML = '';
     
     messages.forEach(msg => {
       const card = document.createElement('div');
@@ -101,7 +108,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       // Check if no messages left
       if (messagesContainer.children.length === 0) {
-        messagesContainer.innerHTML = '<p class="no-messages">No messages yet. Share your link to receive messages!</p>';
+        const noMessages = document.createElement('p');
+        noMessages.className = 'no-messages';
+        noMessages.textContent = 'No messages yet. Share your link to receive messages!';
+        messagesContainer.appendChild(noMessages);
       }
       
     } catch (error) {

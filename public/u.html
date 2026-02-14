@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Anonymous Message - Annyknowmous</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h1 id="recipientName">Send Anonymous Message</h1>
+      <p class="subtitle">Your message will be sent anonymously</p>
+      
+      <form id="messageForm">
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea 
+            id="message" 
+            name="message" 
+            required 
+            maxlength="500"
+            rows="6"
+            placeholder="Type your anonymous message here..."
+          ></textarea>
+          <small id="charCount">0 / 500 characters</small>
+        </div>
+        
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+        
+        <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+      </form>
+    </div>
+  </div>
+  <script src="/js/publicMessage.js"></script>
+</body>
+</html>

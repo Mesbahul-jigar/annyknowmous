@@ -1,0 +1,14 @@
+{
+  "name": "annyknowmous",
+  "version": "1.0.0",
+  "description": "Anonymous inbox system",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "mongodb": "^6.0.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cookie": "^0.6.0"
+  }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Annyknowmous</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="dashboard-content">
+      <h1>Your Anonymous Inbox</h1>
+      
+      <div class="public-link-section">
+        <label>Your Public Link:</label>
+        <div class="link-container">
+          <input type="text" id="publicLink" readonly>
+          <button class="btn btn-secondary" id="copyBtn">Copy</button>
+        </div>
+        <small>Share this link to receive anonymous messages</small>
+      </div>
+      
+      <div class="messages-section">
+        <h2>Received Messages</h2>
+        <div id="messagesContainer">
+          <p class="loading">Loading messages...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
